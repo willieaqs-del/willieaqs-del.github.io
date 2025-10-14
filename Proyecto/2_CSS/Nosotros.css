@@ -1,0 +1,119 @@
+/*---------------------------------------------------------NOSOTROS-----------------------------------------------------*/
+/* Encapsulamiento general */
+.nosotros {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+/* Sección Historia */
+.historia {
+  background-color: #f5f5f5;
+}
+
+.historia-text {
+  flex: 1 1 50%;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.historia-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #003300;
+}
+
+.historia-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.historia-img {
+  flex: 1 1 50%;
+  background-image: url('../5_Imagenes/historia.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Sección Visión y Misión */
+.vision-mision {
+  background-color: #e8f5e9;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.vision, .mision {
+  flex: 1 1 50%;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.vision h2, .mision h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #003300;
+}
+
+.vision p, .mision p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Sección Compromiso */
+.compromiso {
+  background-color: #f5f5f5;
+}
+
+.compromiso-img {
+  flex: 1 1 50%;
+  background-image: url('c../5_Imagenes/historia.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.compromiso-text {
+  flex: 1 1 50%;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.compromiso-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #003300;
+}
+
+.compromiso-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nosotros {
+    flex-direction: column;
+  }
+
+  .historia-text,
+  .historia-img,
+  .vision,
+  .mision,
+  .compromiso-img,
+  .compromiso-text {
+    flex: 1 1 100%;
+    padding: 2rem;
+  }
+
+  .historia-img,
+  .compromiso-img {
+    background-attachment: scroll;
+  }
+}
