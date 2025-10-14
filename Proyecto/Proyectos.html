@@ -15,16 +15,26 @@
 
   <h2 class="project-intro-heading">Lotes en condominio y residenciales diseñados para tu estilo de vida.</h2>
 
-
-  <!-- Seccion de Proyectos -->
   <section class="project-section" id="project-section">
     <div class="project-grid" id="project-grid"></div>
   </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script src="3_JS/Proyectos.js"></script>
+  <section id="project-detail" class="project-detail"></section>
+  <section id="project-gallery" class="project-gallery"></section>
+
+  <div id="modal" class="modal hidden">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-img" />
+    <div class="modal-nav">
+      <button id="prev">&#10094;</button>
+      <button id="next">&#10095;</button>
+    </div>
+  </div>
 
   <footer data-include="1_HTML/Footer.html"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="3_JS/Proyectos.js"></script>  
   <script src="3_JS/Include.js"></script>
 </body>
 </html>
