@@ -1,4 +1,4 @@
-/*---------------------------------------------------------PROJECTS-----------------------------------------------------*/
+/*---------------------------------------------------------Titulo de Proyectos-----------------------------------------------------*/
 .project-intro-heading {
   text-align: center;
   font-size: 1.8rem;
@@ -8,6 +8,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
+/*---------------------------------------------------------Cards de Proyectos-----------------------------------------------------*/
 .project-section {
   background-size: cover;
   background-position: center;
@@ -22,12 +23,6 @@
   grid-template-columns: repeat(2, 1fr); /* Máximo 2 columnas */
   gap: 2rem;
   margin-top: 2rem;
-}
-
-@media (max-width: 768px) {
-  .project-grid {
-    grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
-  }
 }
 
 .project-card {
@@ -47,17 +42,19 @@
 }
 
 .project-logo img {
-  width: 200px; /* Más grande */
-  height: 200px;
+  width: 250px; /* Más grande */
+  height: 250px;
   object-fit: contain;
 }
 
 .project-image {
   position: relative;
+  height: 100%;
 }
 
 .project-image img {
   width: 100%;
+  height: 100%;
   border-radius: 8px;
   object-fit: cover;
 }
@@ -82,6 +79,143 @@
   background-color: rgba(255, 255, 255, 0.4);
   transform: translate(-50%, -50%) scale(1.05);
 }
+
+@media (max-width: 768px) {
+  .project-grid {
+    grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+  }
+}
+
+/*-----------------------------------------------Detalle del proyecto------------------------------------------------*/
+.project-detail {
+  padding: 0rem 2rem;
+  border-top: 4px solid #1F2A44;
+}
+
+.project-detail h2 {
+  text-align: left;
+  color: #1F2A44;
+  padding: 2rem;
+  margin: 0px;
+}
+
+.project-detail-logo {
+  text-align: center;
+  margin: 0px;
+}
+
+.project-detail-logo img {
+  max-width: 250px;
+  height: auto;
+  object-fit: contain;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/*-----------------------------------------------Galeria de Fotos------------------------------------------------*/
+.gallery-intro-heading{
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #F5F5DC; /* Verde oscuro casi negro */
+  padding: 1.5rem;
+  margin: 0px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.project-gallery {
+  padding: 0rem 2rem 2rem 2rem;
+  background-color: #1F2A44;
+}
+
+.gallery-row {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.gallery-row img {
+  width: 24%;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.3s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.445);
+}
+
+.gallery-row img:hover {
+  transform: scale(1.03);
+}
+
+/*-----------------------------------------------Ventana Modal------------------------------------------------*/
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  max-width: 85%;
+  max-height: 85%;
+  border-radius: 8px;
+}
+
+.modal-nav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  pointer-events: none; /* permite que solo los botones sean clickeables */
+}
+
+.modal-nav button {
+  pointer-events: auto;
+  color: #F5F5DC;
+  background: none;
+  border: none;
+  font-size: 4rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition: transform 0.2s ease;
+}
+
+.modal-nav button:hover {
+  transform: scale(1.1);
+  color: #E97A57;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 3rem;
+  font-size: 4rem;
+  color: #F5F5DC;
+  cursor: pointer
+}
+
+.close:hover {
+  transform: scale(1.1);
+  color: #E97A57;
+}
+
 
 /* 📱 Responsive ajustes adicionales */
 @media (max-width: 768px) {
