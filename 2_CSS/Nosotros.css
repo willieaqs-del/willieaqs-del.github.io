@@ -1,0 +1,67 @@
+/*---------------------- Línea divisoria azul ----------------------*/
+.divider-section {
+  height: 4px;
+  background-color: #f5f5dc71;
+  width: 100%;
+  padding: 2rem;
+}
+/*---------------------- Secciones Horizontales Nosotros/Misión/Visión ----------------------*/
+.about-wrapper {
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.about-section {
+  display: flex;
+  flex-direction: row;
+  min-height: 30vh;
+  overflow: hidden;
+}
+
+.about-content {
+  flex: 1;
+  padding: 4rem 3rem;
+  background-color: #f5f5dc71;
+  color: #1F2A44;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1F2A44;
+}
+
+.about-subtitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #1F2A44;
+}
+
+.about-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Imagen fija estilo parallax */
+.about-image {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  max-height: 40rem;
+}
+
+.image-fixed {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+
+

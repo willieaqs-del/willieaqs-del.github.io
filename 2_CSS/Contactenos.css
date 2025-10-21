@@ -1,0 +1,166 @@
+/*---------------------------------------------------------SALES TEAM-----------------------------------------------------*/
+
+.sales-team h2{
+    text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1F2A44; /* Verde oscuro casi negro */
+  margin-bottom: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.sales-team div {
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.team-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 2rem 2rem 2rem;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.team-card {
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 2rem;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+}
+
+.team-card img {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  transition: transform 0.5s ease;
+  filter: none;
+}
+
+.team-card:hover img {
+  transform: scale(1.1);
+}
+
+.team-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+  color: #1F2A44;
+}
+
+.team-card p {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+  color: #1F2A44;
+}
+
+.team-card a {
+  display: block;
+  margin: 0.3rem 0;
+  color: #1F2A44;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+.team-card a:hover {
+  color: #E97A57;
+  font-size: 1.05rem;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .team-card {
+    width: 90%;
+  }
+}
+
+/*---------------------------------------------------------FORMS-----------------------------------------------------*/
+
+.contact-form-section {
+  margin: 4rem auto 4rem auto;
+  padding: 2rem;
+  background-color: #1F2A44;
+  border-radius: 10px;
+  max-width: 1000px;
+  color: #F5F5DC;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-form-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #F5F5DC;
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.contact-form label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #003300;
+}
+
+.contact-form button {
+  padding: 1rem;
+  background-color: #4A6FA5;
+  color: #F5F5DC;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.contact-form button:hover {
+  transform: scale(1.01);
+  font-size: 1.15rem;
+  color:#E97A57;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full-width {
+    grid-column: span 1;
+  }
+}

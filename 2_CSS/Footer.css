@@ -1,0 +1,97 @@
+/*---------------------------------------------------------FOOTER-----------------------------------------------------*/
+.main-footer {
+  background-image: url('../5_Imagenes/footer_background.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.footer-overlay {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas en pantallas grandes */
+  gap: 1rem;
+  background-color: #1f2a448e;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.footer-box {
+  padding: 0 1rem;
+  border-right: 1px solid #F5F5DC;;
+}
+
+.footer-box:nth-child(4) {
+  border-right: none;
+}
+
+/* Títulos y texto */
+.footer-box h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #F5F5DC;
+}
+
+.footer-box p,
+.footer-box a {
+  font-size: 1rem;
+  color: #F5F5DC;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  
+}
+
+.footer-box a:hover {
+  color: #E97A57;
+  font-size: 1.02rem;
+  text-decoration: underline;
+}
+
+/* Redes sociales */
+.social-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.social-links img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #E97A57;
+  font-size: 1.02rem;
+}
+
+.social-links a:hover img {
+  transform: scale(1.1);
+}
+
+/* 📱 Responsive: 2 columnas por fila */
+@media (max-width: 768px) {
+  .footer-overlay {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    text-align: center;
+  }
+
+  .footer-box {
+    border-right: none; /* eliminar todas por defecto */
+  }
+
+  /* Reaplicar línea solo a las cajas en columna izquierda */
+  .footer-box:nth-child(1),
+  .footer-box:nth-child(3) {
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .social-links a {
+    justify-content: center;
+  }
+}

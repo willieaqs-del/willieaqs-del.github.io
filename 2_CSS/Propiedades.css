@@ -1,0 +1,235 @@
+/* ---------------------------------------------General-------------------------------------------------*/
+.property-heading {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1F2A44; /* Verde oscuro casi negro */
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+  padding: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.property-section {
+  padding: 0rem;
+  margin: 0;
+  width: 100%;
+}
+
+/* ---------------------------------------------Filtros-------------------------------------------------*/
+.property-filters-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: #1F2A44;
+  margin:0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.property-filters-wrapper input,
+.property-filters-wrapper select {
+  padding: 0.5rem 0.8rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #F0F4FA;
+  color: #1F2A44;
+  font-weight: 500;
+  font-size: 15px;
+  width: 10%;
+}
+
+.property-filters-wrapper button {
+  padding: 0.6rem 1rem;
+  background-color: #4A6FA5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.property-filters-wrapper button:hover {
+  transform: scale(1.03);
+  color: #E97A57;
+}
+/* -------------------------------------- Controles y paginación ------------------------------------------*/
+.property-controls-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 2rem 1.5rem 2rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.property-controls {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.property-controls label {
+  margin-right: 0.5rem;
+  font-weight: 600;
+  color: #1F2A44;
+}
+
+.property-controls select {
+  padding: 0.5rem 0.8rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #4A6FA5;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #4A6FA5;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: rem;
+  transition: transform 0.4s ease;
+}
+
+.pagination button:hover  {
+  transform: scale(1.1);
+  color: #E97A57;
+  font-size: 1rem;
+}
+
+.pagination button.active {
+  padding: 0.6rem 1.3rem;
+  color: #E97A57;
+  font-size: 1rem;
+}
+
+/* --------------------------------------------- Propiedades Cards -------------------------------------------------*/
+.property-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0 2rem 0 2rem;
+}
+
+.property-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.property-info {
+  flex: 1;
+  padding-right: 1rem;
+}
+
+.property-info h3 {
+  margin-top: 0;
+  color: #1F2A44;
+}
+
+.property-info p {
+  margin: 0.3rem 0;
+  font-size: 14px;
+}
+
+.property-info .highlight {
+  font-weight: bold;
+  font-size: 14px;
+  color: #1F2A44;
+}
+
+/* Ícono Google Maps */
+.maps-icon img {
+  width: 18px;
+  height: 18px;
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.maps-icon img:hover {
+  transform: scale(1.2);
+}
+
+/* Imagen */
+.property-image {
+  width: 50%;
+  position: relative;
+}
+
+.property-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.property-image a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  backdrop-filter: blur(4px);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.property-image a:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .property-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .property-image {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .property-info {
+    padding-right: 0;
+  }
+
+  .property-controls-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .property-controls {
+    margin-left: 0;
+  }
+}
