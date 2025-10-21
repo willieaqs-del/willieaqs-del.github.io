@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Grupo Inmobiliario</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="2_CSS/Proyectos.css">
+  <link rel="stylesheet" href="2_CSS/Header.css" />
+  <link rel="stylesheet" href="2_CSS/Footer.css" />
+  <link rel="shortcut icon" href="4_Iconos/icon_tab.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header data-include="1_HTML/Header.html"></header>
+
+  <h2 class="project-intro-heading">Lotes en condominio y residenciales diseñados para tu estilo de vida.</h2>
+
+  <section class="project-section" id="project-section">
+    <div class="project-grid" id="project-grid"></div>
+  </section>
+
+  <section id="project-detail" class="project-detail"></section>
+  <section id="project-gallery" class="project-gallery"></section>
+
+  <div id="modal" class="modal hidden">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-img" />
+    <div class="modal-nav">
+      <button id="prev">&#10094;</button>
+      <button id="next">&#10095;</button>
+    </div>
+  </div>
+
+  <footer data-include="1_HTML/Footer.html"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="3_JS/Proyectos.js"></script>  
+  <script src="3_JS/Include.js"></script>
+</body>
+</html>

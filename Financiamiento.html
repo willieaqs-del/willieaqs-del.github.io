@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Grupo Inmobiliario</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="2_CSS/Financiamiento.css">
+  <link rel="stylesheet" href="2_CSS/Header.css" />
+  <link rel="stylesheet" href="2_CSS/Footer.css" />
+  <link rel="shortcut icon" href="4_Iconos/icon_tab.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header data-include="1_HTML/Header.html"></header>
+
+  <section class="contact-form-section">
+    <h2>Cálculo su cuota así de fácil y rápido</h2>
+    <form class="contact-form" id="credit-calculator">
+      <div class="form-group">
+        <label for="lot-price">Precio del lote (₡)</label>
+        <input type="number" id="lot-price" placeholder="Ej. 25,000,000" required>
+      </div>
+
+      <div class="form-group">
+        <label for="installments">Plazo de financiamiento</label>
+        <select id="installments" required>
+          <option value="60">5 años – 60 cuotas</option>
+          <option value="96">8 años – 96 cuotas</option>
+          <option value="120">10 años – 120 cuotas</option>
+          <option value="180">15 años – 180 cuotas</option>
+          <option value="240">20 años – 240 cuotas</option>
+          <option value="300">25 años – 300 cuotas</option>
+          <option value="360">30 años – 360 cuotas</option>
+        </select>
+      </div>
+
+      <div class="form-group full-width">
+        <label for="financing-type">Tipo de financiamiento</label>
+        <select id="financing-type">
+          <option value="0.12">Con nosotros – 12% anual</option>
+        </select>
+      </div>
+
+      <div class="form-group full-width">
+        <button type="submit">Calcular cuota mensual</button>
+      </div>
+
+      <div class="form-group full-width">
+        <label for="result">Resultado</label>
+        <input type="text" id="result" readonly placeholder="₡0.00">
+      </div>
+    </form>
+  </section>
+
+  <footer data-include="1_HTML/Footer.html"></footer>
+  <script src="3_JS/Include.js"></script>
+  <script src="3_JS/Financiamiento.js"></script>
+</body>
+</html>

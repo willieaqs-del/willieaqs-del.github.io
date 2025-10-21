@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Grupo Inmobiliario</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="2_CSS/Contactenos.css">
+  <link rel="stylesheet" href="2_CSS/Header.css" />
+  <link rel="stylesheet" href="2_CSS/Footer.css" />
+  <link rel="shortcut icon" href="4_Iconos/icon_tab.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header data-include="1_HTML/Header.html"></header>
+
+  <!-- Equipo de Ventas -->
+  <section class="sales-team" id="sales-team">
+    <h2>Contacta a Nuestro Equipo de Ventas</h2>
+    <div class="team-container" id="team-container"></div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="3_JS/Equipo_Ventas.js"></script>
+
+  <section class="contact-form-section">
+    <h2>Contáctenos</h2>
+    <form class="contact-form" id="contact-form">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" title="Solo letras">
+      </div>
+      <div class="form-group">
+        <label for="apellidos">Apellidos</label>
+        <input type="text" id="apellidos" name="apellidos" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" title="Solo letras">
+      </div>
+      <div class="form-group">
+        <label for="correo">Correo Electrónico</label>
+        <input type="email" id="correo" name="correo" required>
+      </div>
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono" required pattern="[0-9]+" title="Solo números">
+      </div>
+      <div class="form-group">
+        <label for="pais">País</label>
+        <select id="pais" name="pais" required>
+          <option value="">Seleccione su país</option>
+          <option value="Costa Rica">Costa Rica</option>
+          <option value="Panamá">Panamá</option>
+          <option value="Nicaragua">Nicaragua</option>
+          <option value="México">México</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+      <div class="form-group full-width">
+        <label for="consulta">Consulta</label>
+        <textarea id="consulta" name="consulta" rows="4" required></textarea>
+      </div>
+      <div class="form-group full-width">
+        <label for="verificacion">¿Eres humano? Escribe "sí"</label>
+        <input type="text" id="verificacion" name="verificacion" required pattern="sí|Sí|SI|si" title="Escribe sí para continuar">
+      </div>
+      <div class="form-group full-width">
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+  </section>
+  
+  <footer data-include="1_HTML/Footer.html"></footer>
+  <script src="3_JS/Include.js"></script>
+  <script src="3_JS/Header_Menu.js"></script>
+</body>
+</html>
