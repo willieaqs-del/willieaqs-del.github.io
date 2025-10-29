@@ -13,40 +13,41 @@
 <body>
   <header data-include="1_HTML/Header.html"></header>
 
-    <main class="about-wrapper">
+  <main class="about-wrapper">
     <section class="divider-section"></section>
+
     <!-- Sección 1: Nosotros -->
     <section class="about-section">
       <div class="about-content">
-        <h2 class="about-title">Nosotros</h2>
-        <h3 class="about-subtitle">¿Quiénes somos?</h3>
-        <p>Somos un grupo inmobiliario comprometido con el desarrollo sostenible, la innovación y el bienestar de nuestras comunidades.</p>
-        <h3 class="about-subtitle">Nuestra historia</h3>
-        <p>Desde nuestros inicios, hemos liderado proyectos que transforman espacios en hogares, negocios y oportunidades.</p>
-      </div>
+        <h2 data-i18n="nosotros.title" class="about-title"></h2>
+        <h3 data-i18n="nosotros.subtitle1" class="about-subtitle"></h3>
+        <p data-i18n="nosotros.text1"></p>
+        <h3 data-i18n="nosotros.subtitle2" class="about-subtitle"></h3>
+        <p data-i18n="nosotros.text2"></p>
+        </div>
       <div class="about-image image-fixed" style="background-image: url('6_Nosotros/historia.png');"></div>
     </section>
 
-    <!-- Sección 2: Línea azul -->
+    <!-- Línea azul -->
     <section class="divider-section"></section>
 
-    <!-- Sección 3: Misión -->
+    <!-- Sección 2: Misión -->
     <section class="about-section reverse">
       <div class="about-image image-fixed" style="background-image: url('6_Nosotros/historia.png');"></div>
       <div class="about-content">
-        <h2 class="about-title">Misión</h2>
-        <p>Impulsar proyectos inmobiliarios que generen valor económico, social y ambiental, con ética y excelencia.</p>
+        <h2 data-i18n="mision.title" class="about-title"></h2>
+        <p data-i18n="mision.text"></p>
       </div>
     </section>
 
-    <!-- Sección 4: Línea azul -->
+    <!-- Línea azul -->
     <section class="divider-section"></section>
 
-    <!-- Sección 5: Visión -->
+    <!-- Sección 3: Visión -->
     <section class="about-section">
       <div class="about-content">
-        <h2 class="about-title">Visión</h2>
-        <p>Ser líderes en soluciones inmobiliarias integrales, reconocidos por nuestra innovación, impacto y compromiso humano.</p>
+        <h2 data-i18n="vision.title" class="about-title"></h2>
+        <p data-i18n="vision.text"></p>
       </div>
       <div class="about-image image-fixed" style="background-image: url('6_Nosotros/historia.png');"></div>
     </section>
@@ -55,5 +56,6 @@
 
   <footer data-include="1_HTML/Footer.html"></footer>
   <script src="3_JS/Include.js"></script>
+  <script src="3_JS/Traduccion.js"></script>
 </body>
 </html>

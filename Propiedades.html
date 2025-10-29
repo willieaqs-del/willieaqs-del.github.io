@@ -13,35 +13,35 @@
 <body>
   <header data-include="1_HTML/Header.html"></header>
 
-  <!-- Filtros de búsqueda -->
   <section class="property-section" id="property-section">
 
+    <!-- Filtros de búsqueda -->
     <div class="property-filters-wrapper">
-      <input type="number" id="minPrice" placeholder="Precio Mínimo (₡)" />
-      <input type="number" id="maxPrice" placeholder="Precio Máximo (₡)" />
-      <input type="number" id="minArea" placeholder="Área mínima (m²)" />
-      <input type="number" id="maxArea" placeholder="Área máxima (m²)" />
-      <input type="text" id="locationFilter" placeholder="Ubicación..." />
+      <input type="number" id="minPrice" data-i18n-placeholder="filters.minPrice" />
+      <input type="number" id="maxPrice" data-i18n-placeholder="filters.maxPrice" />
+      <input type="number" id="minArea" data-i18n-placeholder="filters.minArea" />
+      <input type="number" id="maxArea" data-i18n-placeholder="filters.maxArea" />
+      <input type="text" id="locationFilter" data-i18n-placeholder="filters.location" />
       <select id="condoFilter">
-        <option value="">(Condominios)</option>
+        <option value="" data-i18n="filters.condos"></option>
       </select>
       <select id="sortBy">
-        <option value="">Ordenar por</option>
-        <option value="price-asc">Precio Ascendente</option>
-        <option value="price-desc">Precio Descendente</option>
-        <option value="area-asc">Área Ascendente</option>
-        <option value="area-desc">Área Descendente</option>
+        <option value="" data-i18n="filters.sort"></option>
+        <option value="price-asc" data-i18n="filters.priceAsc"></option>
+        <option value="price-desc" data-i18n="filters.priceDesc"></option>
+        <option value="area-asc" data-i18n="filters.areaAsc"></option>
+        <option value="area-desc" data-i18n="filters.areaDesc"></option>
       </select>
-      <button id="applyFilters">Buscar</button>
+      <button id="applyFilters" data-i18n="filters.search"></button>
     </div>
 
-    <h2 class="property-heading">Propiedades disponibles para tu inversión ideal</h2>
+    <h2 class="property-heading" data-i18n="properties.title"></h2>
 
     <!-- Controles superiores -->
     <div class="property-controls-wrapper">
       <div class="pagination" id="pagination-top"></div>
       <div class="property-controls">
-        <label for="itemsPerPage">Mostrar:</label>
+        <label for="itemsPerPage" data-i18n="controls.show"></label>
         <select id="itemsPerPage">
           <option value="10">10</option>
           <option value="20">20</option>
@@ -53,14 +53,16 @@
     <!-- Lista de propiedades -->
     <div class="property-list" id="property-list"></div>
 
-    <!-- Controles inferiores se renderizan vía JS -->
+    <!-- Controles inferiores -->
     <div id="pagination"></div>
   </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script src="3_JS/Propiedades.js"></script>
-
+  
   <footer data-include="1_HTML/Footer.html"></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   <script src="3_JS/Include.js"></script>
+  <script src="3_JS/Traduccion.js"></script>
+  <script src="3_JS/Propiedades.js"></script>
 </body>
 </html>

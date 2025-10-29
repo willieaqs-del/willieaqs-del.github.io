@@ -13,15 +13,17 @@
 <body>
   <header data-include="1_HTML/Header.html"></header>
 
-  <h2 class="project-intro-heading">Lotes en condominio y residenciales diseñados para tu estilo de vida.</h2>
-
+  <!-- Sección 3: Cards Proyectos -->
+  <h2 data-i18n="proyectos.title" class="project-intro-heading"></h2>  
   <section class="project-section" id="project-section">
     <div class="project-grid" id="project-grid"></div>
   </section>
 
+  <!-- Sección 3: Galeria Proyectos -->
   <section id="project-detail" class="project-detail"></section>
   <section id="project-gallery" class="project-gallery"></section>
 
+  <!-- Sección 3: Modal Fotos -->
   <div id="modal" class="modal hidden">
     <span class="close">&times;</span>
     <img class="modal-content" id="modal-img" />
@@ -34,7 +36,8 @@
   <footer data-include="1_HTML/Footer.html"></footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script src="3_JS/Proyectos.js"></script>  
   <script src="3_JS/Include.js"></script>
+  <script src="3_JS/Traduccion.js"></script>
+  <script src="3_JS/Proyectos.js"></script>  
 </body>
 </html>

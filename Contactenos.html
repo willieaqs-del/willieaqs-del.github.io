@@ -12,62 +12,64 @@
 </head>
 <body>
   <header data-include="1_HTML/Header.html"></header>
-
+  
   <!-- Equipo de Ventas -->
   <section class="sales-team" id="sales-team">
-    <h2>Contacta a Nuestro Equipo de Ventas</h2>
+    <h2 data-i18n="contact.teamTitle"></h2>
     <div class="team-container" id="team-container"></div>
   </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script src="3_JS/Equipo_Ventas.js"></script>
-
+  <!-- Forms de Correo -->
   <section class="contact-form-section">
-    <h2>Contáctenos</h2>
+    <h2 data-i18n="contact.formTitle"></h2>
     <form class="contact-form" id="contact-form">
       <div class="form-group">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" title="Solo letras">
+        <label for="nombre" data-i18n="contact.labelName"></label>
+        <input type="text" id="nombre" name="nombre" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" data-i18n-title="contact.titleName">
       </div>
       <div class="form-group">
-        <label for="apellidos">Apellidos</label>
-        <input type="text" id="apellidos" name="apellidos" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" title="Solo letras">
+        <label for="apellidos" data-i18n="contact.labelLastName"></label>
+        <input type="text" id="apellidos" name="apellidos" required pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]+" data-i18n-title="contact.titleLastName">
       </div>
       <div class="form-group">
-        <label for="correo">Correo Electrónico</label>
+        <label for="correo" data-i18n="contact.labelEmail"></label>
         <input type="email" id="correo" name="correo" required>
       </div>
       <div class="form-group">
-        <label for="telefono">Teléfono</label>
-        <input type="tel" id="telefono" name="telefono" required pattern="[0-9]+" title="Solo números">
+        <label for="telefono" data-i18n="contact.labelPhone"></label>
+        <input type="tel" id="telefono" name="telefono" required pattern="[0-9]+" data-i18n-title="contact.titlePhone">
       </div>
       <div class="form-group">
-        <label for="pais">País</label>
+        <label for="pais" data-i18n="contact.labelCountry"></label>
         <select id="pais" name="pais" required>
-          <option value="">Seleccione su país</option>
+          <option value="" data-i18n="contact.selectCountry"></option>
           <option value="Costa Rica">Costa Rica</option>
           <option value="Panamá">Panamá</option>
           <option value="Nicaragua">Nicaragua</option>
           <option value="México">México</option>
-          <option value="Otro">Otro</option>
+          <option value="Otro" data-i18n="contact.optionOther">Otro</option>
         </select>
       </div>
       <div class="form-group full-width">
-        <label for="consulta">Consulta</label>
+        <label for="consulta" data-i18n="contact.labelMessage"></label>
         <textarea id="consulta" name="consulta" rows="4" required></textarea>
       </div>
       <div class="form-group full-width">
-        <label for="verificacion">¿Eres humano? Escribe "sí"</label>
-        <input type="text" id="verificacion" name="verificacion" required pattern="sí|Sí|SI|si" title="Escribe sí para continuar">
+        <label for="verificacion" data-i18n="contact.labelVerify"></label>
+        <input type="text" id="verificacion" name="verificacion" required pattern="sí|Sí|SI|Si|sÍ|SÍ|yes|Yes|YES|yEs|yeS|YeS|YEs" data-i18n-title="contact.titleVerify">
       </div>
       <div class="form-group full-width">
-        <button type="submit">Enviar</button>
+        <button type="submit" data-i18n="contact.buttonSend"></button>
       </div>
     </form>
   </section>
   
   <footer data-include="1_HTML/Footer.html"></footer>
-  <script src="3_JS/Include.js"></script>
-  <script src="3_JS/Header_Menu.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="3_JS/Include.js"></script> 
+  <script src="3_JS/Traduccion.js"></script>
+  <script src="3_JS/Equipo_Ventas.js"></script>
+  <script src="3_JS/Contactenos.js"></script>
 </body>
 </html>
