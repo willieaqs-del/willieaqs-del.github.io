@@ -1,20 +1,77 @@
-  <header class="main-header">
-    <div class="header-overlay">
-      <div class="header-text">
-        <h1>Terrenos 100% Financiados en La Fortuna</h1>
-        <h2>Con Grupo EcoQuintas, cumplir el sueño de tener tu lote propio nunca fue tan fácil.</h2>
+<header class="main-header">
+  <!-- Menú fijo superior -->
+  <div class="menu-background">
+    <div class="top-bar">
+      <div class="logo-container">
+          <img src="../4_Iconos/icon_empresa.png" alt="Logo Empresa" class="logo" />
       </div>
-      <div class="sticky-nav">
-        <nav class="main-nav">
-          <ul>
-            <li><a href="Nosotros.html"><img src="4_Iconos/icon_nosotros.svg" alt="Icono Nosotros" /> Nosotros</a></li>
-            <li><a href="Proyectos.html"><img src="4_Iconos/icon_proyectos.svg" alt="Icono Proyectos" /> Proyectos</a></li>
-            <li><a href="Propiedades.html"><img src="4_Iconos/icon_propiedades.svg" alt="Icono Propiedades" /> Propiedades</a></li>
-            <li><a href="Contactenos.html"><img src="4_Iconos/icon_contacto.svg" alt="Icono Contacto" /> Contáctenos</a></li>
-            <li><a href="Servicios.html"><img src="4_Iconos/icon_servicios.svg" alt="Icono Servicios" /> Servicios</a></li>
-            <li><a href="Financiamiento.html"><img src="4_Iconos/icon_financiamiento.svg" alt="Icono Financiamiento" /> Financiamiento</a></li>
-          </ul>
-        </nav>
+
+      <nav class="main-nav">
+        <ul>
+          <li><a data-i18n="header.menu1" href="Nosotros.html"><img src="4_Iconos/icon_nosotros.svg" alt="Icono Nosotros" /></a></li>
+          <li><a data-i18n="header.menu2" href="Proyectos.html"><img src="4_Iconos/icon_proyectos.svg" alt="Icono Proyectos" /></a></li>
+          <li><a data-i18n="header.menu3" href="Propiedades.html"><img src="4_Iconos/icon_propiedades.svg" alt="Icono Propiedades" /></a></li>
+          <li><a data-i18n="header.menu4" href="Contactenos.html"><img src="4_Iconos/icon_contacto.svg" alt="Icono Contacto" /></a></li>
+          <li><a data-i18n="header.menu5" href="Servicios.html"><img src="4_Iconos/icon_servicios.svg" alt="Icono Servicios" /></a></li>
+          <li><a data-i18n="header.menu6" href="Financiamiento.html"><img src="4_Iconos/icon_financiamiento.svg" alt="Icono Financiamiento" /></a></li>
+        </ul>
+      </nav>
+
+      <!-- Controles flotantes -->
+      <div class="floating-controls">
+        <div class="button-row">
+          <button id="lang-toggle" title="Cambiar idioma">
+            <img src="4_Iconos/icon_england.png" alt="English" class="flag-icon" />
+          </button>
+          <button id="currency-toggle" title="Cambiar moneda">₡ <span>CRC</span></button>
+        </div>
+        <div class="exchange-container">
+          <h2 id="usd-rate"></h2>
+        </div>
       </div>
     </div>
-  </header>
+  </div>
+
+  <!-- Carrusel de fondo -->
+  <div class="carousel">
+    <div class="slides">
+      <div class="slide active" style="background-image: url('../5_Imagenes/header_background.jpg')">
+        <div class="header-text">
+          <h1 data-i18n="carousel.slide1.title">Explore nuestras opciones de inversión en residenciales</h1>
+          <h2 data-i18n="carousel.slide1.subtitle">Descubra proyectos modernos, seguros y con alta plusvalía</h2>
+          <a href="Propiedades.html#residenciales" class="cta-button" data-i18n="carousel.slide1.button">Ver residenciales</a>
+        </div>
+      </div>
+
+      <div class="slide active" style="background-image: url('../5_Imagenes/header_background.jpg')">
+        <div class="header-text">
+          <h1 data-i18n="carousel.slide1.title">Nuestros proyectos tiene las mejores amenidades</h1>
+          <h2 data-i18n="carousel.slide1.subtitle">Casa Club - Piscina - BBQ - Parqueo de Visitas</h2>
+          <a href="Propiedades.html#residenciales" class="cta-button" data-i18n="carousel.slide1.button">Ver residenciales</a>
+        </div>
+      </div>
+
+      <div class="slide active" style="background-image: url('../5_Imagenes/header_background.jpg')">
+        <div class="header-text">
+          <h1 data-i18n="carousel.slide1.title">Proyectos en preventa al mejor precio</h1>
+          <h2 data-i18n="carousel.slide1.subtitle">Pague su prima faccionada hasta en 24 cuotas</h2>
+          <a href="Propiedades.html#residenciales" class="cta-button" data-i18n="carousel.slide1.button">Ver residenciales</a>
+        </div>
+      </div>
+
+      <div class="slide active" style="background-image: url('../5_Imagenes/header_background.jpg')">
+        <div class="header-text">
+          <h1 data-i18n="carousel.slide1.title">Contamos con servicios adicionales para su lote</h1>
+          <h2 data-i18n="carousel.slide1.subtitle">Llave en mano - Arquitectura - Mantenimiento</h2>
+          <a href="Propiedades.html#residenciales" class="cta-button" data-i18n="carousel.slide1.button">Servicios</a>
+        </div>
+      </div>
+      <!-- Agrega más slides aquí -->
+    </div>
+    <div class="carousel-dots"></div>
+  </div>
+
+  <script src="3_JS/Tipo_Cambio.js"></script>
+  <script src="3_JS/Header_Menu.js"></script>
+  <script src="3_JS/Carousel.js"></script>
+</header>
