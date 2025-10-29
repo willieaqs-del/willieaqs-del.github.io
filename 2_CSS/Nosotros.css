@@ -20,7 +20,7 @@
 
 .about-content {
   flex: 1;
-  padding: 4rem 3rem;
+  padding: 0rem 3rem 3rem 3rem;
   background-color: #f5f5dc71;
   color: #1F2A44;
   display: flex;
@@ -31,14 +31,14 @@
 .about-title {
   font-size: 2rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
   color: #1F2A44;
 }
 
 .about-subtitle {
   font-size: 1.2rem;
   font-weight: 500;
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   color: #1F2A44;
 }

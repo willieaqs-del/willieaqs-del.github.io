@@ -1,4 +1,3 @@
-/* Elimina márgenes del body */
 body {
   margin: 0;
   padding: 0;
@@ -6,78 +5,43 @@ body {
   background-color: #f5f5dc71;
 }
 
-/*---------------------------------------------------------HEADER-----------------------------------------------------*/
-/* Fondo y contenedor principal */
-.main-header {
-  background-image: url('../5_Imagenes/header_background.jpg');
-  background-size: cover;
-  background-position: center;
-  padding: 2rem 0 0 0;
-  margin: 0;
-  position: relative;
+/*----------------------------------- Menú fijo superior -----------------------------------*/
+.menu-background {
+  background-color:#1F2A44;
+  height: 6rem;
 }
 
-/* Capa de color sobre la imagen */
-.header-overlay {
-  background-color: #1f2a448e; /* verde oscuro con transparencia */
-  padding: 2rem 2rem 0cqi 2rem;
-  height: 100%; /* Cubre toda la altura del header */
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Centrado de textos */
-.header-text {
-  text-align: center;
-  transition: opacity 0.3s ease;
-}
-.scrolled .header-text {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.header-text h1 {
-  font-size: 2.5rem;
-  color: #F5F5DC;
-  padding: 1rem 0;
-  margin: 0;
-}
-
-.header-text h2 {
-  font-size: 1.5rem;
-  color: #F5F5DC;
-  margin-bottom: 2rem;
-  padding: 1rem;
-  margin: 0;
-}
-
-/* Menú centrado y distribuido */
-.sticky-nav {
-  position: sticky;
+.top-bar {
+  position: fixed;
   top: 0;
-  padding: 1rem auto;
-  z-index: 999;
-  padding: 1.5rem 0;
+  width: 100%;
+  background-color: rgba(31, 42, 68, 0.85);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  z-index: 1000;
+  height: 5rem;
+}
+
+.logo {
+  height: 3.5rem;
+  width: auto;
 }
 
 .main-nav ul {
-  padding: 0;
-  margin: 0;
   display: flex;
-  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-/* Ítems del menú */
 .main-nav li {
-  flex: 1 1 auto;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
-/* Estilo de enlaces */
 .main-nav a {
   color: #F5F5DC;
   text-decoration: none;
@@ -90,25 +54,183 @@ body {
   font-size: 1rem;
 }
 
-/* ✨ Hover: más brillo, texto e ícono más grandes */
-.main-nav a:hover {
-  color: #E97A57;
-  font-size: 1.05rem;
-  text-decoration: underline;
-}
-
-.main-nav a:hover img {
-  color: #E97A57;
-  transform: scale(1.1);
-}
-
-/* Íconos */
 .main-nav img {
-  width: 23px;         /* Aumenta el tamaño del ícono */
+  width: 23px;
   height: 23px;
 }
 
-/* 📱 Responsive */
+.main-nav a:hover {
+  color: #E97A57;
+  text-decoration: underline;
+}
+
+/*----------------------------------- Controles idioma y Moneda -----------------------------------*/
+.floating-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  margin-right: 2.5rem;
+}
+
+.button-row {
+  display: flex;
+  gap: 8px;
+}
+
+.button-row button {
+  background-color: #f5f5dc;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  width: 65px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+}
+
+.button-row button:hover {
+  background-color: #E97A57;
+}
+
+.flag-icon {
+  width: 22px;
+  height: auto;
+}
+
+.button-row span {
+  font-size: 12px;
+  color: #333;
+}
+
+.exchange-container {
+  background-color: #f5f5dc;
+  border-radius: 4px;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  backdrop-filter: blur(4px);
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+  font-size: 9px;
+  height: 39px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/*----------------------------------- Carrusel -----------------------------------*/
+.carousel {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  height: 500px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 1s ease-in-out;
+  height: 100%;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+  z-index: 1;
+}
+
+.slides.no-transition {
+  transition: none !important;
+}
+
+.header-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #F5F5DC;
+  animation: fadeInUp 1s ease;
+}
+
+.header-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.header-text h2 {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.cta-button {
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: rgba(255,255,255,0.4);
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+}
+
+.carousel-dots button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background-color: #F5F5DC;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-dots button.active {
+  background-color: #E97A57;
+}
+
+/* Animación */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .main-nav ul {
     flex-direction: column;
@@ -125,5 +247,9 @@ body {
 
   .header-text h2 {
     font-size: 1.2rem;
+  }
+
+  .carousel {
+    height: 400px;
   }
 }
