@@ -21,12 +21,15 @@ fetch('9_Contactenos/Equipo_Ventas_Informacion.xlsx')
         <img src="9_Contactenos/${imagen}.png" alt="${nombre}" />
         <h3>${nombre} ${apellido}</h3>
         <p>${celular}</p>
-        <a href="mailto:${correo}">Correo</a>
-        <a href="https://wa.me/506${celular}" target="_blank">WhatsApp</a>
-        <a href="tel:+506${celular}">📱 Llamar</a>
+        <a href="https://wa.me/506${celular}" target="_blank">Whatsapp</a>
+        <a href="mailto:${correo}" data-i18n="equipo.correo"></a>
+        <a href="tel:+506${celular}" data-i18n="equipo.llamar"></a>
       `;
 
       container.appendChild(card);
     });
+    if (typeof aplicarTraduccion === 'function') {
+      aplicarTraduccion(idioma);
+    }
   })
   .catch(err => console.error('Error al cargar el archivo Excel:', err));

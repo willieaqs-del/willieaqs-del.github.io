@@ -112,23 +112,23 @@ function renderProperties(data = properties) {
         <h3>${Titulo}</h3>
         <p>${Descripcion}</p>
         <p>
-          <span class="highlight">Ubicación:</span> ${Ubicacion}
+          <span class="highlight" data-i18n="propiedad.ubicacion">Ubicación:</span> ${Ubicacion}
           <a href="https://www.google.com/maps/search/${encodeURIComponent(Ubicacion)}" target="_blank" class="maps-icon">
             <img src="4_Iconos/icon_google_maps.png" alt="Google Maps" />
           </a>
         </p>
         <p>
-          <span class="highlight">Precio:</span> ₡${Precio.toLocaleString()}
-          <span class="highlight">| ₡/m²:</span> ₡${precioPorMetro.toLocaleString()}
+          <span class="highlight" data-i18n="propiedad.precio">Precio:</span> ₡${Precio.toLocaleString()}
+          <span class="highlight" data-i18n="propiedad.precioMetro">| ₡/m²:</span> ₡${precioPorMetro.toLocaleString()}
         </p>
-        <p><span class="highlight">Área:</span> ${Metros_Cuadrados} m²</p>
-        ${Descuento ? `<p><span class="highlight">Descuento:</span> ${(Descuento * 100).toFixed(0)}%</p>` : ''}
-        <p><span class="highlight">Pago mensual (10 años):</span> ₡${pagoMensual.toLocaleString()}</p>
-        ${Condominio ? `<p><span class="highlight">Condominio:</span> ${Condominio}</p>` : ''}
+        <p><span class="highlight" data-i18n="propiedad.area">Área:</span> ${Metros_Cuadrados} m²</p>
+        ${Descuento ? `<p><span class="highlight" data-i18n="propiedad.descuento">Descuento:</span> ${(Descuento * 100).toFixed(0)}%</p>` : ''}
+        <p><span class="highlight" data-i18n="propiedad.pagoMensual">Pago mensual (10 años):</span> ₡${Math.floor(pagoMensual).toLocaleString()}</p>
+        ${Condominio ? `<p><span class="highlight" data-i18n="propiedad.condominio">Condominio:</span> ${Condominio}</p>` : ''}
       </div>
       <div class="property-image">
         <img src="8_Propiedades/${Imagen}.jpg" alt="${Titulo}" loading="lazy" />
-        <a href="${urlDetalle}" target="_blank">Ver Detalles</a>
+        <a href="${urlDetalle}" target="_blank" data-i18n="propiedad.verDetalles">Ver Detalles</a>
       </div>
     `;
 
@@ -137,6 +137,10 @@ function renderProperties(data = properties) {
 
   renderPagination('pagination-top', data);
   renderControlsBelow(data);
+
+  if (typeof aplicarTraduccion === 'function') {
+    aplicarTraduccion(idioma);
+  }
 }
 
 function renderPagination(containerId, data = properties) {
@@ -172,7 +176,7 @@ function renderControlsBelow(data = properties) {
   const controls = document.createElement('div');
   controls.className = 'property-controls';
   controls.innerHTML = `
-    <label for="itemsPerPageBottom">Mostrar:</label>
+    <label for="itemsPerPageBottom" data-i18n="controls.show">Mostrar:</label>
     <select id="itemsPerPageBottom">
       <option value="10">10</option>
       <option value="20">20</option>

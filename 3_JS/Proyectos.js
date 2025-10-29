@@ -23,7 +23,7 @@ fetch('7_Proyectos/Proyectos_Informacion.xlsx')
         </div>
         <div class="project-image">
           <img src="7_Proyectos/${imagenPrincipal}" alt="${nombre} Imagen Principal" />
-          <a href="${url}">Ver Projecto</a>
+          <a data-i18n='proyecto.ver' href="${url}"></a>
         </div>
       `;
 
