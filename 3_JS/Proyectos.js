@@ -134,6 +134,9 @@ fetch('7_Proyectos/Proyectos_Informacion.xlsx')
     };
   }
 
+  if (typeof aplicarTraduccion === 'function') {
+      aplicarTraduccion(idioma);
+  }
 
   })
   .catch(err => console.error('Error al cargar el archivo Excel:', err));
