@@ -242,6 +242,16 @@ body {
 /* Responsive */
 /*----------------------------------- Responsive -----------------------------------*/
 @media (max-width: 768px) {
+  .main-nav {
+    flex: 1;
+    justify-content: center; /* mantiene centrado */
+  }
+
+  .main-nav ul {
+    justify-content: center; /* centra los íconos */
+    gap: 0.5rem;
+    padding-left: 0;         /* elimina empuje hacia la derecha */
+  }
   /* Logo ocupa 1/4 del ancho */
   .logo-container {
     flex: 0 0 60px;
@@ -295,6 +305,34 @@ body {
   }
   .header-text h2 {
     font-size: 1rem;
+  }
+  .floating-controls {
+    position: absolute;
+    top: 3.3rem;              /* justo debajo del menú azul */
+    right: 25px;
+    flex-direction: row;    /* botones en fila */
+    align-items: center;
+    padding: 0;
+    border-radius: 6px;
+  }
+
+  .floating-controls .exchange-container {
+    display: none;          /* oculta el número del tipo de cambio */
+  }
+
+  .floating-controls .button-row {
+    gap: 0.3rem;
+  }
+
+  .floating-controls button {
+    font-size: 0.9rem;
+    padding: 0.2rem 0.6rem;
+    width: 57px;
+  }
+
+  .floating-controls .flag-icon {
+    width: 20px;
+    height: auto;
   }
 }
 

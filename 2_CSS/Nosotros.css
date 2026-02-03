@@ -2,8 +2,10 @@
 .divider-section {
   height: 4px;
   width: 100%;
-  padding: 2rem;
+  padding: 2rem 0; /* solo arriba/abajo, no a los lados */
+  box-sizing: border-box;
 }
+
 /*---------------------- Secciones Horizontales Nosotros/Misión/Visión ----------------------*/
 .about-wrapper {
   width: 100%;
@@ -101,7 +103,7 @@
 
   .about-image {
     width: 100%;
-    min-height: 200px;          /* aseguro altura mínima */
+    min-height: 2300px;          /* aseguro altura mínima */
     background-size: cover;     /* que se vea completa */
     background-position: center;
     border-radius: 6px;
