@@ -3,7 +3,8 @@ async function cargarServiciosDesdeExcel() {
   const arrayBuffer = await response.arrayBuffer();
   const workbook = XLSX.read(arrayBuffer, { type: 'array' });
   const hoja = workbook.Sheets[workbook.SheetNames[0]];
-  const servicios = XLSX.utils.sheet_to_json(hoja);
+  let rawServicios = XLSX.utils.sheet_to_json(hoja);
+  servicios = rawServicios.filter(row => !row.Desplegar || row.Desplegar.toString().trim() === '');
 
   const container = document.getElementById('servicios-container');
 

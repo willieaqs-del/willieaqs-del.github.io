@@ -5,7 +5,6 @@
   font-weight: 600;
   color: #1F2A44; /* Verde oscuro casi negro */
   margin-bottom: 1.5rem;
-  font-family: 'Poppins', sans-serif;
 }
 
 /*---------------------------------------------------------Cards de Proyectos-----------------------------------------------------*/
@@ -16,6 +15,8 @@
   padding-top: 0;
   color: white;
   text-align: center;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .project-grid {
@@ -43,7 +44,7 @@
 
 .project-logo img {
   width: 250px; /* Más grande */
-  height: 250px;
+  height: 190px;
   object-fit: contain;
 }
 
@@ -61,23 +62,23 @@
 
 .project-image a {
   position: absolute;
-  top: 50%;
+  top: 50%; 
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.2); /* Efecto translúcido */
+  background-color: rgba(0,0,0,0.4);
   color: white;
-  padding: 1rem 2rem;
+  padding: 0.6rem 1.2rem;
   border: 2px solid white;
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
-  backdrop-filter: blur(4px);
   transition: background-color 0.3s ease, transform 0.3s ease;
+  transform-origin: center center;
 }
 
 .project-image a:hover {
-  background-color: rgba(255, 255, 255, 0.4);
-  transform: translate(-50%, -50%) scale(1.05);
+  background-color: rgba(0, 0, 0, 0.6);
+  transform: translate(-50%, -50%) scale(1.08);
 }
 
 @media (max-width: 768px) {
@@ -89,7 +90,8 @@
 /*-----------------------------------------------Detalle del proyecto------------------------------------------------*/
 .project-detail {
   padding: 0rem 2rem;
-  border-top: 4px solid #1F2A44;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .project-detail h2 {
@@ -115,29 +117,73 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
+
+.detail-grid h3 {
+  margin-top: 0;
+  color: #1F2A44;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.detail-grid p {
+  margin: 0.3rem 0;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #333;
+}
+
+.bullet-list li {
+  margin-bottom: 0.6rem;       /* espacio extra entre renglones */
+  font-size: 18px;
+}
+
 /*-----------------------------------------------Boton ver propiedades------------------------------------------------*/
 .project-detail-button {
   display: flex;
-  justify-content: flex-end;
-  margin: 1rem 0 1rem 0;
+  justify-content: flex-start; /* ahora se alinea a la izquierda */
+  margin: 1rem 0;
 }
 
 .project-detail-button .styled-button {
-  padding: 0.5rem 1rem;
-  background-color: #4A6FA5;
+  background-color: #E97A57;
   color: white;
   border: none;
-  border-radius: 5px;
-  font-weight: 600;
-  text-decoration: none;
-  font-family: 'Poppins', sans-serif;
-  transition: transform 0.3s ease;
+  border-radius: 50px;          /* forma más redondeada */
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;      /* centra el texto dentro del botón */
+  align-items: center;
+  min-width: 200px;             /* ancho mínimo */
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;        /* quitar subrayado */
+  margin: 1rem 0;
 }
 
 .project-detail-button .styled-button:hover {
+  background-color: #cf623f;    /* tono más oscuro al pasar el mouse */
   transform: scale(1.05);
-  color: #E97A57;
 }
+
+/* Ícono Google Maps */
+.maps-icon img {
+  width: auto;          /* se adapta al ancho natural */
+  height: 20px;         /* altura fija */
+  margin: 0;
+  padding: 0;
+  transition: transform 0.3s ease;
+  cursor: pointer;      /* muestra el cursor de enlace */
+}
+
+.maps-icon img:hover {
+  transform: scale(1.1); /* efecto zoom al pasar el mouse */
+}
+
 /*-----------------------------------------------Galeria de Fotos------------------------------------------------*/
 .gallery-intro-heading{
   text-align: center;
@@ -146,7 +192,6 @@
   color: #F5F5DC; /* Verde oscuro casi negro */
   padding: 1.5rem;
   margin: 0px;
-  font-family: 'Poppins', sans-serif;
 }
 
 .project-gallery {
@@ -183,7 +228,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: 1000;
 }
 
 .modal.hidden {

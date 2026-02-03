@@ -18,7 +18,7 @@ fetch('9_Contactenos/Equipo_Ventas_Informacion.xlsx')
       card.className = 'team-card';
 
       card.innerHTML = `
-        <img src="9_Contactenos/${imagen}.png" alt="${nombre}" />
+        <img src="9_Contactenos/${imagen}" alt="${nombre}" />
         <h3>${nombre} ${apellido}</h3>
         <p>${celular}</p>
         <a href="https://wa.me/506${celular}" target="_blank">Whatsapp</a>

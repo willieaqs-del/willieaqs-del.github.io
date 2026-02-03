@@ -69,17 +69,74 @@
 
 .contact-form button:hover {
   transform: scale(1.01);
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: #E97A57;
 }
 
 /* 📱 Responsive */
+/* 📱 Responsive: una sola columna */
 @media (max-width: 768px) {
   .contact-form {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* una sola columna */
   }
 
   .form-group.full-width {
-    grid-column: span 1;
+    grid-column: span 1; /* ocupa toda la columna */
+  }
+
+  .contact-form-section {
+    max-width: 85%;       /* más ancho en tablet/móvil */
+    padding: 1.5rem;
+    margin: 2rem auto;
+  }
+
+  .contact-form-section h2 {
+    font-size: 1.5rem;    /* título más pequeño */
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-form label {
+    font-size: 0.9rem;    /* etiquetas más pequeñas */
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    font-size: 0.9rem;    /* texto más pequeño */
+    padding: 0.7rem;
+  }
+
+  .contact-form button {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-form-section {
+    max-width: 85%;       /* ocupa 90% en celular */
+    padding: 1rem;
+    margin: 1.5rem auto;
+  }
+
+  .contact-form-section h2 {
+    font-size: 1.3rem;    /* título aún más compacto */
+    margin-bottom: 1rem;
+  }
+
+  .contact-form label {
+    font-size: 0.85rem;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    font-size: 0.85rem;
+    padding: 0.6rem;
+  }
+
+  .contact-form button {
+    font-size: 0.95rem;
+    padding: 0.7rem;
   }
 }

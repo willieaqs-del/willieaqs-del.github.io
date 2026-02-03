@@ -7,7 +7,6 @@
   margin-bottom: 1.5rem;
   margin-top: 0;
   padding: 1.5rem;
-  font-family: 'Poppins', sans-serif;
 }
 
 .property-section {
@@ -26,7 +25,6 @@
   padding: 1rem;
   background-color: #1F2A44;
   margin:0;
-  font-family: 'Poppins', sans-serif;
 }
 
 .property-filters-wrapper input,
@@ -67,7 +65,6 @@
   gap: 1rem;
   margin: 1.5rem auto 1.5rem auto;
   width: 80%;
-  font-family: 'Poppins', sans-serif;
 }
 
 .property-controls {
@@ -140,7 +137,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 1rem;
-  font-family: 'Poppins', sans-serif;
+  position: relative; /* ← clave para posicionar el botón */
 }
 
 .property-info {
@@ -151,63 +148,269 @@
 .property-info h3 {
   margin-top: 0;
   color: #1F2A44;
+  font-size: 20px;
 }
 
 .property-info p {
   margin: 0.3rem 0;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .property-info .highlight {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
   color: #1F2A44;
 }
 
 /* Ícono Google Maps */
 .maps-icon img {
-  width: 18px;
-  height: 18px;
-  margin-left: 0.5rem;
+  width: auto;
+  height: 20px;
+  margin: 0;
+  padding: 0;
   transition: transform 0.3s ease;
 }
 
 .maps-icon img:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
-/* Imagen */
+/* Imagen --------------------------------------------*/
 .property-image {
   width: 50%;
   position: relative;
+  height: 350px; /* altura fija */
 }
 
 .property-image img {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover;
+  height: 100%; /* ocupa todo el alto definido */ 
+  border-radius: 8px; 
+  object-fit: cover; /* recorta sin deformar */
 }
 
-.property-image a {
+/* --- Slider dentro de cada card --- */
+.image-slider img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.image-slider img.active { opacity: 1; }
+
+.slider-btn {
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.4);
+  transform: translateY(-50%);
+  display: flex;              /* activa flexbox */
+  align-items: center;        /* centra verticalmente */
+  justify-content: center;    /* centra horizontalmente */
+  background-color: rgba(0,0,0,0.4);
   color: white;
-  padding: 0.8rem 1.5rem;
+  border: 2px solid white;
+  border-radius: 8px;
+  padding: 0rem 0.3rem 0.5rem 0.3rem;
+  margin: 0;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 3rem;            /* tamaño grande para la flecha */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  transform-origin: center center;
+}
+.slider-btn.prev { left: 10px; }
+.slider-btn.next { right: 10px; }
+
+.details-btn {
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%); /* centra en ambos ejes */
+  background-color: rgba(0,0,0,0.4);
+  color: white;
+  padding: 0.6rem 1.2rem;
   border: 2px solid white;
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
-  backdrop-filter: blur(4px);
   transition: background-color 0.3s ease, transform 0.3s ease;
+  transform-origin: center center;
 }
 
-.property-image a:hover {
+.details-btn:hover {
   background-color: rgba(0, 0, 0, 0.6);
-  transform: translate(-50%, -50%) scale(1.05);
+  transform: translate(-50%, -50%) scale(1.08); /* mantiene el centrado y añade scale */
+}
+
+.slider-btn:hover { 
+  background-color: rgba(0, 0, 0, 0.6); 
+  transform: translateY(-50%) scale(1.08); /* mantener translateY y añadir scale */ 
+} 
+
+.inline-link {
+  margin-left: 0.1rem;
+  font-size: 1rem;
+  color: #4A6FA5;           /* ← tu color azul deseado */
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.inline-link:hover {
+  color: #E97A57;           /* opcional: cambia a naranja al pasar el puntero */
+  text-decoration: underline;
+}
+
+/* ------------------------------------------------------ Modal de imágenes -------------------------------------------- */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85); /* fondo más oscuro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  max-width: 85%;
+  max-height: 85%;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+/* Navegación dentro del modal */
+.modal-nav {
+  position: absolute;
+  top: 50%;
+  left: 0; right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  pointer-events: none;
+}
+
+.modal-nav button {
+  pointer-events: auto;
+  color: #F5F5DC;
+  background: none;
+  border: none;
+  font-size: 4rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.modal-nav button:hover {
+  transform: scale(1.1);
+  color: #E97A57; /* naranja de tu paleta */
+}
+
+/* Botón de cierre */
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 3rem;
+  font-size: 3.5rem;
+  color: #F5F5DC;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.close:hover {
+  transform: scale(1.1);
+  color: #E97A57;
+}
+
+/*---------------------------------------------------------Boton de contacto------------------------------------------------ */
+.contact-button-wrapper {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.contact-btn {
+  background-color: #E97A57;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;   /* centra horizontalmente */
+  align-items: center;       /* centra verticalmente */
+  min-width: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Texto inicial centrado */
+.contact-btn .label {
+  width: 100%;
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+/* Íconos centrados en fila */
+.contact-options {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.contact-options a img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+  padding:0px 0.4rem 0px 0.4rem;
+  filter: brightness(0) invert(1); /* convierte íconos oscuros a blanco */
+}
+
+.contact-options a:hover img {
+  transform: scale(1.2);
+}
+
+/* Hover: oculta texto y muestra íconos */
+.contact-btn:hover .label {
+  opacity: 0;
+}
+
+.contact-btn:hover .contact-options {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Responsive: en móviles la imagen ocupa más espacio */
+@media (max-width: 768px) {
+  .modal-content {
+    max-width: 95%;
+    max-height: 80%;
+  }
+  .modal-nav button {
+    font-size: 3rem;
+  }
+  .close {
+    font-size: 3rem;
+    right: 1.5rem;
+  }
 }
 
 /* Responsive */
@@ -219,6 +422,7 @@
 
   .property-image {
     width: 100%;
+    height: 180px;
     margin-top: 1rem;
   }
 

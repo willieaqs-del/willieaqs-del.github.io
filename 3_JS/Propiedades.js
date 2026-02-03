@@ -8,13 +8,14 @@ const itemsSelectTop = document.getElementById('itemsPerPage');
 const condoSelect = document.getElementById('condoFilter');
 const applyFiltersBtn = document.getElementById('applyFilters');
 
-// Cargar Excel
+// ---------------------------------- Cargar Archivo Excel -------------------------------------------
 fetch('8_Propiedades/Propiedades_Informacion.xlsx')
   .then(res => res.arrayBuffer())
   .then(data => {
     const workbook = XLSX.read(data, { type: 'array' });
     const sheet = workbook.Sheets[workbook.SheetNames[0]];
-    properties = XLSX.utils.sheet_to_json(sheet);
+    let rawProperties = XLSX.utils.sheet_to_json(sheet);
+    properties = rawProperties.filter(row => !row.Desplegar || row.Desplegar.toString().trim() === '');
     populateCondoOptions();
     const presetCondo = new URLSearchParams(window.location.search).get('condominio');
     if (presetCondo) {
@@ -37,6 +38,7 @@ itemsSelectTop.addEventListener('change', () => {
   renderProperties();
 });
 
+// ---------------------------------- Agregar click a filtros -------------------------------------------
 applyFiltersBtn.addEventListener('click', () => {
   const minPrice = parseFloat(document.getElementById('minPrice').value) || 0;
   const maxPrice = parseFloat(document.getElementById('maxPrice').value) || Infinity;
@@ -71,6 +73,7 @@ applyFiltersBtn.addEventListener('click', () => {
   renderProperties(filtered);
 });
 
+// ----------------------------------Cargar drop down de condominios -------------------------------------------
 function populateCondoOptions() {
   const uniqueCondos = [...new Set(properties.map(p => p.Condominio).filter(Boolean))];
   uniqueCondos.forEach(condo => {
@@ -81,6 +84,7 @@ function populateCondoOptions() {
   });
 }
 
+// ---------------------------------- Renderizar Cards de propiedades -------------------------------------------
 function renderProperties(data = properties) {
   listContainer.innerHTML = '';
   paginationTop.innerHTML = '';
@@ -88,15 +92,16 @@ function renderProperties(data = properties) {
   const end = start + itemsPerPage;
   const pageItems = data.slice(start, end);
 
-  pageItems.forEach(prop => {
+  pageItems.forEach((prop, index) => {
     const {
       Titulo,
+      Titulo_Ingles,
       Descripcion,
+      Descripcion_Ingles,
       Ubicacion,
       Precio,
       Metros_Cuadrados,
       Descuento,
-      Imagen,
       urlDetalle,
       Condominio
     } = prop;
@@ -104,13 +109,35 @@ function renderProperties(data = properties) {
     const precioPorMetro = Precio / Metros_Cuadrados;
     const pagoMensual = (Precio - (Descuento || 0)) / 120;
 
+    // Claves únicas para traducción
+    const claveTitulo = `propiedad.titulo_${index + start}`;
+    const claveDescripcion = `propiedad.descripcion_${index + start}`;
+
+    if (!traducciones['es']) traducciones['es'] = {};
+    if (!traducciones['en']) traducciones['en'] = {};
+    traducciones['es'][claveTitulo] = Titulo;
+    traducciones['en'][claveTitulo] = Titulo_Ingles || Titulo;
+    traducciones['es'][claveDescripcion] = Descripcion;
+    traducciones['en'][claveDescripcion] = Descripcion_Ingles || Descripcion;
+
+    // Recolectar imágenes dinámicamente
+    const imagenes = [];
+    for (let i = 1; i <= 10; i++) {
+      const campo = prop[`Imagen_${i}`];
+      if (campo) imagenes.push(`8_Propiedades/${campo}`);
+    }
+
+    const sliderImgs = imagenes.map((img, idx) =>
+      `<img src="${img}" alt="${Titulo}" ${idx === 0 ? 'class="active"' : ''} />`
+    ).join('');
+
     const card = document.createElement('div');
     card.className = 'property-card';
 
     card.innerHTML = `
       <div class="property-info">
-        <h3>${Titulo}</h3>
-        <p>${Descripcion}</p>
+        <h3 data-i18n="${claveTitulo}">${Titulo}</h3>
+        <p data-i18n="${claveDescripcion}">${Descripcion}</p>
         <p>
           <span class="highlight" data-i18n="propiedad.ubicacion">Ubicación:</span> ${Ubicacion}
           <a href="https://www.google.com/maps/search/${encodeURIComponent(Ubicacion)}" target="_blank" class="maps-icon">
@@ -118,21 +145,77 @@ function renderProperties(data = properties) {
           </a>
         </p>
         <p>
-          <span class="highlight" data-i18n="propiedad.precio">Precio:</span> ₡${Precio.toLocaleString()}
-          <span class="highlight" data-i18n="propiedad.precioMetro">| ₡/m²:</span> ₡${precioPorMetro.toLocaleString()}
+          <span class="highlight" data-i18n="propiedad.precio">Precio:</span>
+          <span class="TipoCambio precio" data-valor="${Precio}">
+            ₡${Precio.toLocaleString()}
+          </span>
+          <span class="highlight simbolo-precioMetro" data-i18n="propiedad.precioMetro">| ₡/m²:</span>
+          <span class="TipoCambio precio-m2" data-valor="${precioPorMetro}">
+            ₡${precioPorMetro.toLocaleString()}
+          </span>
         </p>
-        <p><span class="highlight" data-i18n="propiedad.area">Área:</span> ${Metros_Cuadrados} m²</p>
-        ${Descuento ? `<p><span class="highlight" data-i18n="propiedad.descuento">Descuento:</span> ${(Descuento * 100).toFixed(0)}%</p>` : ''}
-        <p><span class="highlight" data-i18n="propiedad.pagoMensual">Pago mensual (10 años):</span> ₡${Math.floor(pagoMensual).toLocaleString()}</p>
-        ${Condominio ? `<p><span class="highlight" data-i18n="propiedad.condominio">Condominio:</span> ${Condominio}</p>` : ''}
+        <p>
+          <span class="highlight" data-i18n="propiedad.area">Área:</span>
+          ${Metros_Cuadrados} m²
+        </p>
+        <p>
+          <span class="highlight" data-i18n="propiedad.pagoMensual">Pago mensual (10 años):</span>
+          <span class="TipoCambio pago-mensual" data-valor="${pagoMensual}">
+            ₡${Math.floor(pagoMensual).toLocaleString()}
+          </span>
+          <a href="Financiamiento.html?precio=${Precio}" class="inline-link">(Ver Financiamiento)</a>
+        </p>
+        ${Condominio ? `
+         <p>
+          <span class="highlight" data-i18n="propiedad.condominio">Condominio:</span> ${Condominio}
+          <a href="Proyectos.html?proyecto=${encodeURIComponent(Condominio)}" class="inline-link">(Ver Condominio)</a>
+        </p>
+      ` : ''}
       </div>
       <div class="property-image">
-        <img src="8_Propiedades/${Imagen}.jpg" alt="${Titulo}" loading="lazy" />
-        <a href="${urlDetalle}" target="_blank" data-i18n="propiedad.verDetalles">Ver Detalles</a>
+        <div class="image-slider">
+          ${sliderImgs}
+        </div>
+        <button class="slider-btn prev">‹</button>
+        <button class="slider-btn next">›</button>
+        <a href="${urlDetalle}" target="_blank" class="details-btn" data-i18n="propiedad.verDetalles">Ver</a>
+      </div>
+      <div class="contact-button-wrapper">
+        <button class="contact-btn">
+          <span class="label">Contactar ahora</span>
+          <div class="contact-options">
+            <a href="tel:+50687038811" title="Llamar"><img src="4_Iconos/icon_phone.png" alt="Teléfono" /></a>
+            <a href="https://wa.me/50687038811" target="_blank" title="WhatsApp"><img src="4_Iconos/icon_whatsapp.png" alt="WhatsApp" /></a>
+            <a href="Contactenos.html?lote=${encodeURIComponent(Titulo)}" title="Correo"><img src="4_Iconos/icon_email.png" alt="Correo" /></a>
+          </div>
+        </button>
       </div>
     `;
 
     listContainer.appendChild(card);
+
+    // Slider dentro de la card
+    const imgs = card.querySelectorAll('.image-slider img');
+    let currentImg = 0;
+
+    card.querySelector('.next').addEventListener('click', () => {
+      imgs[currentImg].classList.remove('active');
+      currentImg = (currentImg + 1) % imgs.length;
+      imgs[currentImg].classList.add('active');
+    });
+
+    card.querySelector('.prev').addEventListener('click', () => {
+      imgs[currentImg].classList.remove('active');
+      currentImg = (currentImg - 1 + imgs.length) % imgs.length;
+      imgs[currentImg].classList.add('active');
+    });
+
+    // Interceptar click en details-btn para abrir modal
+    const detailsBtn = card.querySelector('.details-btn');
+    detailsBtn.addEventListener('click', (e) => {
+      e.preventDefault(); // evita abrir urlDetalle
+      setupModal(imagenes);
+    });
   });
 
   renderPagination('pagination-top', data);
@@ -204,4 +287,31 @@ function syncDropdowns(value) {
   document.getElementById('itemsPerPage').value = value;
   const bottom = document.getElementById('itemsPerPageBottom');
   if (bottom) bottom.value = value;
+}
+
+function setupModal(fotos) {
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modal-img');
+  const closeBtn = modal.querySelector('.close');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  let current = 0;
+
+  // Mostrar primera imagen
+  modalImg.src = fotos[current];
+  modal.classList.remove('hidden');
+
+  prevBtn.onclick = () => {
+    current = (current - 1 + fotos.length) % fotos.length;
+    modalImg.src = fotos[current];
+  };
+
+  nextBtn.onclick = () => {
+    current = (current + 1) % fotos.length;
+    modalImg.src = fotos[current];
+  };
+
+  closeBtn.onclick = () => {
+    modal.classList.add('hidden');
+  };
 }

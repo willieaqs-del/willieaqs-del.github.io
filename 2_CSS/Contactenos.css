@@ -6,7 +6,6 @@
   font-weight: 600;
   color: #1F2A44; /* Verde oscuro casi negro */
   margin-bottom: 1.5rem;
-  font-family: 'Poppins', sans-serif;
 }
 
 .sales-team div {
@@ -96,7 +95,6 @@
   border-radius: 10px;
   max-width: 1000px;
   color: #F5F5DC;
-  font-family: 'Poppins', sans-serif;
 }
 
 .contact-form-section h2 {
@@ -145,6 +143,7 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 1.1rem;
+  width: 100%; /* ocupa todo el ancho */
   transition: transform 0.3s ease;
 }
 
@@ -156,11 +155,76 @@
 
 /* 📱 Responsive */
 @media (max-width: 768px) {
+
+  .sales-team h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
   .contact-form {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* una sola columna */
   }
 
   .form-group.full-width {
-    grid-column: span 1;
+    grid-column: span 1; /* ocupa toda la columna */
+  }
+
+  .contact-form-section {
+    max-width: 85%;       /* ocupa casi todo el ancho */
+    padding: 1.5rem;
+    margin: 2rem auto;
+  }
+
+  .contact-form-section h2 {
+    font-size: 1.5rem;    /* título más pequeño */
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .contact-form label {
+    font-size: 0.9rem;    /* etiquetas más pequeñas */
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    font-size: 0.9rem;    /* texto más pequeño */
+    padding: 0.7rem;
+  }
+
+  .contact-form button {
+    font-size: 1rem;
+    padding: 0.8rem;
+    display: block;
+    margin: 0 auto;       /* botón centrado */
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-form-section {
+    max-width: 85%;       /* ocupa 90% en celular */
+    padding: 1rem;
+    margin: 1.5rem auto;
+  }
+
+  .contact-form-section h2 {
+    font-size: 1.3rem;    /* título aún más compacto */
+    margin-bottom: 1rem;
+  }
+
+  .contact-form label {
+    font-size: 0.85rem;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    font-size: 0.85rem;
+    padding: 0.6rem;
+  }
+
+  .contact-form button {
+    font-size: 0.95rem;
+    padding: 0.7rem;
+    margin: 0 auto;       /* centrado en móvil */
   }
 }

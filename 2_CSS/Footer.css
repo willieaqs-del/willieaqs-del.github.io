@@ -91,7 +91,21 @@
     border-right: 1px solid rgba(255, 255, 255, 0.4);
   }
 
+  .footer-box h3 {
+    font-size: 1rem;
+  }
+
+  .footer-box p,
+  .footer-box a {
+    font-size: 0.85rem;
+  }
+
   .social-links a {
     justify-content: center;
+  }
+
+  .social-links img {
+    width: 20px;
+    height: 20px;
   }
 }

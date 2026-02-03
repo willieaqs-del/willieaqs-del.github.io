@@ -2,12 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Grupo Inmobiliario</title>
+  <title>Quintas del Norte</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="2_CSS/Propiedades.css">
   <link rel="stylesheet" href="2_CSS/Header.css" />
   <link rel="stylesheet" href="2_CSS/Footer.css" />
-  <link rel="shortcut icon" href="4_Iconos/icon_tab.png" type="image/x-icon">
+  <link rel="shortcut icon" href="4_Iconos/icon_tab.jpeg" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -57,7 +57,15 @@
     <div id="pagination"></div>
   </section>
 
-  
+  <div id="modal" class="modal hidden">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-img" />
+    <div class="modal-nav">
+      <button id="prev">&#10094;</button>
+      <button id="next">&#10095;</button>
+    </div>
+  </div>
+    
   <footer data-include="1_HTML/Footer.html"></footer>
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>

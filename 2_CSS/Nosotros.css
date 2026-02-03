@@ -1,7 +1,6 @@
 /*---------------------- Línea divisoria azul ----------------------*/
 .divider-section {
   height: 4px;
-  background-color: #f5f5dc71;
   width: 100%;
   padding: 2rem;
 }
@@ -15,13 +14,14 @@
   display: flex;
   flex-direction: row;
   min-height: 30vh;
+  max-width: 80%;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .about-content {
   flex: 1;
   padding: 0rem 3rem 3rem 3rem;
-  background-color: #f5f5dc71;
   color: #1F2A44;
   display: flex;
   flex-direction: column;
@@ -55,13 +55,80 @@
   background-size: cover;
   background-position: center;
   max-height: 40rem;
+  border-radius: 8px;
 }
 
 .image-fixed {
   position: sticky;
   top: 0;
   height: 100vh;
+  transition: transform 0.5s ease;
+}
+
+.image-fixed:hover {
+  transform: scale(1.05);
+  filter: brightness(1) contrast(1.1);
 }
 
 
+@media (max-width: 768px) {
+  .divider-section {padding: 0.5rem;}
+  .about-section {
+    flex-direction: column;   /* texto arriba, imagen abajo */
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .about-content {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .about-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .about-subtitle {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  .about-content p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .about-image {
+    width: 100%;
+    min-height: 200px;          /* aseguro altura mínima */
+    background-size: cover;     /* que se vea completa */
+    background-position: center;
+    border-radius: 6px;
+    margin-top: 1rem;
+  }
+
+  .image-fixed {
+    position: relative;         /* quito sticky */
+    height: auto;               /* dejo que se ajuste */
+  }
+}
+
+@media (max-width: 480px) {
+  .about-title {
+    font-size: 1.3rem;
+  }
+
+  .about-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .about-content p {
+    font-size: 0.8rem;
+  }
+
+  .about-image {
+    min-height: 150px;          /* altura mínima en celular */
+  }
+}
 

@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Lato', sans-serif;
   background-color: #f5f5dc71;
 }
 
@@ -20,12 +20,12 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 2rem;
-  z-index: 1000;
+  z-index: 999;
   height: 5rem;
 }
 
 .logo {
-  height: 3.5rem;
+  height: 4rem;
   width: auto;
 }
 
@@ -172,12 +172,14 @@ body {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px #000;
+  font-family: 'Cinzel', serif;
 }
 
 .header-text h2 {
   font-size: 1.3rem;
   margin-bottom: 2rem;
   text-shadow: 1px 1px 3px #000;
+  font-family: 'Cinzel', serif;
 }
 
 .cta-button {
@@ -218,6 +220,13 @@ body {
   background-color: #E97A57;
 }
 
+.divider-line {
+  width: 100%;
+  height: 4px; 
+  background-color: #1F2A44;
+  margin:0; 
+}
+
 /* Animación */
 @keyframes fadeInUp {
   from {
@@ -231,25 +240,77 @@ body {
 }
 
 /* Responsive */
+/*----------------------------------- Responsive -----------------------------------*/
 @media (max-width: 768px) {
+  /* Logo ocupa 1/4 del ancho */
+  .logo-container {
+    flex: 0 0 60px;
+  }
+  .logo {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Barra azul más baja */
+  .menu-background {
+    height: 3rem; /* mitad de 6rem */
+  }
+  .top-bar {
+    height: 2.5rem; /* mitad de 5rem */
+    padding: 0.3rem 1rem;
+  }
+
+  /* Menú solo con íconos */
   .main-nav ul {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    gap: 0.3rem;
+    padding-left: 1rem;
+  }
+  .main-nav a {
+    padding: 0.3rem;
+    font-size: 0; /* oculta texto */
+  }
+  .main-nav img {
+    width: 24px;
+    height: 24px;
   }
 
-  .main-nav li {
-    justify-content: flex-start;
+  /* Controles flotantes más compactos */
+  .floating-controls {
+    margin-right: 1rem;
+    gap: 4px;
+  }
+  .button-row button {
+    width: 50px;
+    font-size: 12px;
+    padding: 4px 6px;
   }
 
+  /* Carrusel más compacto */
+  .carousel {
+    height: 400px;
+  }
   .header-text h1 {
     font-size: 2rem;
   }
-
   .header-text h2 {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
+}
 
+@media (max-width: 480px) {
+  /* Ajustes adicionales para pantallas muy pequeñas */
   .carousel {
-    height: 400px;
+    height: 300px;
+  }
+  .header-text h1 {
+    font-size: 1.5rem;
+  }
+  .header-text h2 {
+    font-size: 1rem;
+  }
+  .main-nav img {
+    width: 21px;
+    height: 21px;
   }
 }

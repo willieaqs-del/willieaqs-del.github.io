@@ -8,7 +8,6 @@
   font-weight: 600;
   color: #1F2A44;
   margin-bottom: 2rem;
-  font-family: 'Poppins', sans-serif;
 }
 
 .servicios-grid {
@@ -25,6 +24,11 @@
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.servicio-card:hover {
+transform: scale(1.02);
 }
 
 .servicio-card.normal {
@@ -66,3 +70,71 @@
   line-height: 1.6;
 }
 
+/* 📱 Responsive Servicios */
+@media (max-width: 768px) {
+
+  .servicios-heading {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  .servicios-adicionales {
+    padding:  0rem 1.5rem 0rem 1.5rem;
+  }
+  .servicios-grid {
+    max-width: 100%;       /* cards ocupan casi todo el ancho */
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .servicio-card {
+    flex-direction: column; /* texto arriba, imagen abajo */
+    width: 95%;             /* casi todo el ancho */
+    margin: 0.5rem auto;
+  }
+
+  .servicio-imagen {
+    width: 100%;
+    height: 200px;          /* altura fija para imagen en tablet */
+    order: 2;               /* imagen abajo */
+  }
+
+  .servicio-texto {
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    order: 1;               /* texto arriba */
+  }
+
+  .servicio-texto h3 {
+    font-size: 1.2rem;      /* título más pequeño */
+    margin: 0;
+    padding: auto;
+  }
+
+  .servicio-texto p {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .servicio-card {
+    width: 100%;            /* ocupa todo el ancho en móvil */
+    border-radius: 8px;
+  }
+
+  .servicio-imagen {
+    height: 150px;          /* más compacto en móvil */
+  }
+
+  .servicio-texto {
+    padding: 0.8rem;
+  }
+
+  .servicio-texto h3 {
+    font-size: 1rem;
+  }
+
+  .servicio-texto p {
+    font-size: 0.8rem;
+  }
+}
