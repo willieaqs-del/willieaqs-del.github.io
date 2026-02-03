@@ -26,3 +26,45 @@
   color: #333;
   margin-bottom: 1rem;
 }
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .terminos-condiciones {
+    padding: 1.5rem;
+    max-width: 95%; /* ocupa más ancho en tablet/móvil */
+  }
+
+  .terminos-condiciones h1 {
+    font-size: 1.6rem; /* título más pequeño */
+  }
+
+  .terminos-condiciones h2 {
+    font-size: 1.2rem; /* subtítulo más pequeño */
+  }
+
+  .terminos-condiciones p {
+    font-size: 0.9rem; /* párrafos más pequeños */
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminos-condiciones {
+    padding: 1rem;
+    max-width: 100%; /* ocupa todo el ancho en celular */
+  }
+
+  .terminos-condiciones h1 {
+    font-size: 1.4rem; /* título aún más compacto */
+  }
+
+  .terminos-condiciones h2 {
+    font-size: 1rem;
+  }
+
+  .terminos-condiciones p {
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+}
+
