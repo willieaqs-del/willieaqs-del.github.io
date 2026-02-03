@@ -28,26 +28,28 @@
 }
 
 .property-filters-wrapper input,
-.property-filters-wrapper select {
+.property-filters-wrapper select,
+.property-filters-wrapper button {
+  box-sizing: border-box;   /* asegura que padding no rompa el ancho */
   padding: 0.5rem 0.8rem;
-  font-size: 1rem;
+  font-size: 15px;
   border-radius: 5px;
   border: none;
+  font-weight: 500;
+  width: 10%;               /* mismo ancho en desktop */
+}
+
+/* Colores diferenciados */
+.property-filters-wrapper input,
+.property-filters-wrapper select {
   background-color: #F0F4FA;
   color: #1F2A44;
-  font-weight: 500;
-  font-size: 15px;
-  width: 10%;
 }
 
 .property-filters-wrapper button {
-  padding: 0.6rem 1rem;
   background-color: #4A6FA5;
   color: white;
-  border: none;
-  border-radius: 5px;
   font-weight: 600;
-  font-size: 15px;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -399,43 +401,121 @@
 }
 
 /* Responsive: en móviles la imagen ocupa más espacio */
+/* 📱 Responsive ajustes para Propiedades */
 @media (max-width: 768px) {
-  .modal-content {
-    max-width: 95%;
-    max-height: 80%;
+  /* Paginación ocupa todo el ancho */
+  .property-controls-wrapper {
+      padding: 0;
+      width: 90%;
   }
-  .modal-nav button {
-    font-size: 3rem;
+  .pagination button {
+    flex: 1;              /* cada botón se expande */
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
   }
-  .close {
-    font-size: 3rem;
-    right: 1.5rem;
+  .property-controls {
+    margin-left: auto;   /* empuja todo el bloque a la derecha */
   }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
+  .property-list {
+    width: 86%;
+  }
+  /* Cards ocupan 95% del ancho */
   .property-card {
     flex-direction: column;
     align-items: center;
+    width: 90%;
+    margin: 0 auto 1rem auto;
   }
 
+  /* Tipografía más pequeña */
+  .property-info h3 {
+    font-size: 1.1rem;
+  }
+  .property-info p {
+    font-size: 0.85rem;
+  }
+  .property-info a {
+    font-size: 0.85rem;
+    display: block;
+    padding: 3px;
+  }
+  .property-info .highlight {
+    font-size: 0.85rem;
+  }
+
+  /* Ocultar descripción larga */
+  .property-info p[data-i18n^="propiedad.descripcion"] {
+    display: none;
+  }
+
+  /* Imagen con espacio para botón de contacto */
   .property-image {
     width: 100%;
-    height: 180px;
-    margin-top: 1rem;
+    height: 200px;
+    margin: 0.7rem -30px 2.8rem -30px;
   }
 
-  .property-info {
-    padding-right: 0;
-  }
-
-  .property-controls-wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .property-controls {
-    margin-left: 0;
+  /* Botón de contacto centrado abajo */
+  .contact-button-wrapper {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: -2rem; /* lo acerca a la imagen */
   }
 }
+
+@media (max-width: 768px) {
+  /* Flechas del modal abajo en móvil */
+  .modal-nav {
+    position: absolute;
+    bottom: 15px;       /* las coloca al fondo del modal */
+    top: auto;          /* elimina centrado vertical */
+    left: 0; right: 0;
+    transform: none;    /* quita translateY */
+    display: flex;
+    justify-content: center; /* ambas flechas juntas centradas */
+    gap: 2rem;          /* espacio entre ellas */
+  }
+
+  .modal-nav button {
+    font-size: 2rem;    /* más compactas en móvil */
+    padding: 0.3rem 0.6rem;
+  }
+
+  .property-heading {
+    font-size: 1.4rem;
+    margin-bottom: 0rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .property-filters-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 3 columnas iguales */
+    gap: 0.5rem;
+    padding: 0.5rem;
+    width: auto;
+    margin: 0 auto;
+  }
+
+  .property-filters-wrapper input,
+  .property-filters-wrapper select,
+  .property-filters-wrapper button {
+    width: 100%;          /* cada elemento ocupa toda su celda */
+    font-size: 0.85rem;   /* tipografía más pequeña */
+    padding: 0.4rem 0.6rem;
+    margin: 0;
+  }
+  .property-filters-wrapper input::placeholder,
+  .property-filters-wrapper select::placeholder {
+    padding: 0;        /* elimina padding interno del placeholder */
+    margin: 0;         /* asegura que no tenga margen */
+  }
+
+}
+
+
