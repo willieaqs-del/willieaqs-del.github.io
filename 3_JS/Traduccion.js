@@ -64,6 +64,7 @@ const traducciones = {
     "propiedad.pagoMensual": "Pago mensual (10 años):",
     "propiedad.condominio": "Condominio:",
     "propiedad.verDetalles": "Ver más",
+    "propiedad.descuento": "Descuento",
 
     "contact.teamTitle": "Contacta a Nuestro Equipo de Ventas",
     "equipo.correo": "Correo",
@@ -200,6 +201,7 @@ const traducciones = {
     "propiedad.pagoMensual": "Monthly payment (10 years):",
     "propiedad.condominio": "Condominium:",
     "propiedad.verDetalles": "See more",
+    "propiedad.descuento": "Discount",
 
     "contact.teamTitle": "Contact Our Sales Team",
     "equipo.correo": "Email",

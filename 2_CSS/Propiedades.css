@@ -202,6 +202,44 @@
 }
 .image-slider img.active { opacity: 1; }
 
+/* Ribbon triangular en la esquina superior derecha */
+.discount-ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 10; /* asegura que quede encima de la imagen */
+}
+
+.ribbon-text {
+  position: absolute;
+  display: flex;              /* fuerza las dos líneas en columna */
+  flex-direction: column;     /* una arriba de la otra */
+  align-items: center;
+  justify-content: center;
+  width: 160px;               /* ancho suficiente para el texto rotado */
+  background-color: #E97A57;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.2;
+  transform: rotate(45deg);   /* rota todo el bloque */
+  top: 15px;
+  right: -50px;
+  padding: 6px 0;
+}
+
+.ribbon-text .small {
+  font-size: 0.7rem;
+  font-weight: normal;
+  display: block;
+}
+
+
 .slider-btn {
   position: absolute;
   top: 50%;
@@ -468,6 +506,7 @@
   }
 }
 
+/* Modal ocupa toda la pantalla en móvil */
 @media (max-width: 768px) {
   /* Flechas del modal abajo en móvil */
   .modal-nav {
@@ -479,6 +518,7 @@
     display: flex;
     justify-content: center; /* ambas flechas juntas centradas */
     gap: 2rem;          /* espacio entre ellas */
+    
   }
 
   .modal-nav button {
@@ -492,7 +532,12 @@
   }
 }
 
+
 @media (max-width: 768px) {
+  .property-heading {
+    font-size: 1.4rem;
+    margin-bottom: 0;
+  }
   .property-filters-wrapper {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 3 columnas iguales */

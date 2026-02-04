@@ -54,6 +54,9 @@ function aplicarTipoCambio(moneda, tipoCambioUSD) {
     // Formateo según subtipo
     if (el.classList.contains('precio')) {
       el.textContent = `${simbolo}${valorConvertido.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+    } else if (el.classList.contains('precio-original')) {
+      // Precio original tachado
+      el.innerHTML = `<s>${simbolo}${valorConvertido.toLocaleString(undefined, { maximumFractionDigits: 0 })}</s>`;
     } else if (el.classList.contains('precio-m2')) {
       el.textContent = `${simbolo}${valorConvertido.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
     } else if (el.classList.contains('pago-mensual')) {

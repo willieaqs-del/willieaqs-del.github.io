@@ -106,8 +106,11 @@ function renderProperties(data = properties) {
       Condominio
     } = prop;
 
-    const precioPorMetro = Precio / Metros_Cuadrados;
-    const pagoMensual = (Precio - (Descuento || 0)) / 120;
+    // Calcular valores con descuento
+    const descuentoPorcentaje = Descuento ? Math.round(Descuento * 100) : 0;
+    const precioConDescuento = Descuento ? Precio * (1 - Descuento) : Precio;
+    const precioPorMetro = Metros_Cuadrados ? precioConDescuento / Metros_Cuadrados : 0;
+    const pagoMensual = precioConDescuento / 120;
 
     // Claves únicas para traducción
     const claveTitulo = `propiedad.titulo_${index + start}`;
@@ -135,6 +138,15 @@ function renderProperties(data = properties) {
     card.className = 'property-card';
 
     card.innerHTML = `
+      ${Descuento ? `
+        <div class="discount-ribbon">
+          <span class="ribbon-text">
+            -${descuentoPorcentaje}%
+            <span data-i18n="propiedad.descuento" class="small">discount</span>
+          </span>
+        </div>
+      ` : ''}
+
       <div class="property-info">
         <h3 data-i18n="${claveTitulo}">${Titulo}</h3>
         <p data-i18n="${claveDescripcion}">${Descripcion}</p>
@@ -146,9 +158,18 @@ function renderProperties(data = properties) {
         </p>
         <p>
           <span class="highlight" data-i18n="propiedad.precio">Precio:</span>
-          <span class="TipoCambio precio" data-valor="${Precio}">
-            ₡${Precio.toLocaleString()}
-          </span>
+          ${Descuento ? `
+            <span class="TipoCambio precio-original" data-valor="${Precio}">
+              <s>₡${Precio.toLocaleString()}</s>
+            </span>
+            <span class="TipoCambio precio" data-valor="${precioConDescuento}">
+              ₡${precioConDescuento.toLocaleString()}
+            </span>
+          ` : `
+            <span class="TipoCambio precio" data-valor="${Precio}">
+              ₡${Precio.toLocaleString()}
+            </span>
+          `}
           <span class="highlight simbolo-precioMetro" data-i18n="propiedad.precioMetro">| ₡/m²:</span>
           <span class="TipoCambio precio-m2" data-valor="${precioPorMetro}">
             ₡${precioPorMetro.toLocaleString()}
@@ -163,7 +184,7 @@ function renderProperties(data = properties) {
           <span class="TipoCambio pago-mensual" data-valor="${pagoMensual}">
             ₡${Math.floor(pagoMensual).toLocaleString()}
           </span>
-          <a href="Financiamiento.html?precio=${Precio}" class="inline-link">(Ver Financiamiento)</a>
+          <a href="Financiamiento.html?precio=${precioConDescuento}" class="inline-link">(Ver Financiamiento)</a>
         </p>
         ${Condominio ? `
          <p>
@@ -176,8 +197,8 @@ function renderProperties(data = properties) {
         <div class="image-slider">
           ${sliderImgs}
         </div>
-        <button class="slider-btn prev">‹</button>
-        <button class="slider-btn next">›</button>
+        <button class="slider-btn prev" aria-label="Imagen anterior">‹</button>
+        <button class="slider-btn next" aria-label="Imagen siguiente">›</button>
         <a href="${urlDetalle}" target="_blank" class="details-btn" data-i18n="propiedad.verDetalles">Ver</a>
       </div>
       <div class="contact-button-wrapper">
