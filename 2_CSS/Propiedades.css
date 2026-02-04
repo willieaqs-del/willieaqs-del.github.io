@@ -456,7 +456,7 @@
     margin-left: auto;   /* empuja todo el bloque a la derecha */
   }
   .property-list {
-    width: 86%;
+    width: 93%;
   }
   /* Cards ocupan 95% del ancho */
   .property-card {
@@ -464,6 +464,9 @@
     align-items: center;
     width: 90%;
     margin: 0 auto 1rem auto;
+  }
+  .ribbon-text {
+   font-size: 0.7rem;
   }
 
   /* Tipografía más pequeña */
