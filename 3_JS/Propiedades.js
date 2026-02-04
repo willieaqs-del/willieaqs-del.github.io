@@ -181,7 +181,7 @@ function renderProperties(data = properties) {
         </p>
         <p>
           <span class="highlight" data-i18n="propiedad.pagoMensual">Pago mensual (10 años):</span>
-          <span class="TipoCambio pago-mensual" data-valor="${pagoMensual}">
+          <span class="TipoCambio pago-mensual" data-valor="${precioConDescuento}">
             ₡${Math.floor(pagoMensual).toLocaleString()}
           </span>
           <a href="Financiamiento.html?precio=${precioConDescuento}" class="inline-link">(Ver Financiamiento)</a>

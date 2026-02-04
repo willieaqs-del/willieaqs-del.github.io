@@ -38,7 +38,7 @@ async function obtenerTipoCambio() {
 }
 
 function aplicarTipoCambio(moneda, tipoCambioUSD) {
-  // Definir símbolo una sola vez por función
+  // Definir símbolo
   const simbolo = (moneda === 'usd' && tipoCambioUSD > 0) ? '$' : '₡';
 
   const elementos = document.querySelectorAll('.TipoCambio');
@@ -46,7 +46,7 @@ function aplicarTipoCambio(moneda, tipoCambioUSD) {
     const valorCRC = parseFloat(el.dataset.valor);
     if (isNaN(valorCRC)) return;
 
-    // Convertir por elemento
+    // Convertir base según moneda
     const valorConvertido = (moneda === 'usd' && tipoCambioUSD > 0)
       ? (valorCRC / tipoCambioUSD)
       : valorCRC;
@@ -55,12 +55,18 @@ function aplicarTipoCambio(moneda, tipoCambioUSD) {
     if (el.classList.contains('precio')) {
       el.textContent = `${simbolo}${valorConvertido.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
     } else if (el.classList.contains('precio-original')) {
-      // Precio original tachado
       el.innerHTML = `<s>${simbolo}${valorConvertido.toLocaleString(undefined, { maximumFractionDigits: 0 })}</s>`;
     } else if (el.classList.contains('precio-m2')) {
       el.textContent = `${simbolo}${valorConvertido.toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
     } else if (el.classList.contains('pago-mensual')) {
-      el.textContent = `${simbolo}${Math.floor(valorConvertido).toLocaleString()}`;
+      // 🔹 Calcular cuota mensual con fórmula de amortización
+      const tasaAnual = (moneda === 'usd') ? 0.09 : 0.12; // 9% USD, 12% CRC
+      const tasaMensual = tasaAnual / 12;
+      const n = 120; // 10 años = 120 meses
+
+      const cuota = (valorConvertido * tasaMensual) / (1 - Math.pow(1 + tasaMensual, -n));
+
+      el.textContent = `${simbolo}${Math.round(cuota).toLocaleString()}`;
     } else if (el.classList.contains('precio-financiamiento')) { 
       el.value = Math.floor(valorConvertido); 
     }
@@ -75,7 +81,7 @@ function aplicarTipoCambio(moneda, tipoCambioUSD) {
   if (financingSelect) {
     financingSelect.innerHTML = (moneda === "crc")
       ? `<option value="0.12">12% CRC</option>`
-      : `<option value="0.08">8% USD</option>`;
+      : `<option value="0.09">9% USD</option>`;
   }
 
   // Actualizar label de precio
