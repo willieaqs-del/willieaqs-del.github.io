@@ -137,7 +137,7 @@ function renderProjectDetail(proyecto, id) {
       <div>
         <h3 data-i18n="proyectos.ubicacion">Ubicación</h3>
         <p>${proyecto.Ubicacion || 'No disponible'}</p>
-        <a href="https://www.google.com/maps/search/${encodeURIComponent(proyecto.Ubicacion || '')}" 
+        <a href="https://maps.google.com/?q=${encodeURIComponent(proyecto.Ubicacion || '')}" 
            target="_blank" 
            class="maps-icon">
           <img src="4_Iconos/icon_google_maps.png" alt="Google Maps" />

@@ -152,7 +152,7 @@ function renderProperties(data = properties) {
         <p data-i18n="${claveDescripcion}">${Descripcion}</p>
         <p>
           <span class="highlight" data-i18n="propiedad.ubicacion">Ubicación:</span> ${Ubicacion}
-          <a href="https://www.google.com/maps/search/${encodeURIComponent(Ubicacion)}" target="_blank" class="maps-icon">
+          <a href="https://maps.google.com/?q=${encodeURIComponent(Ubicacion)}" target="_blank" class="maps-icon">
             <img src="4_Iconos/icon_google_maps.png" alt="Google Maps" />
           </a>
         </p>
