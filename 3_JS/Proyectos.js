@@ -58,7 +58,7 @@ function renderProjectCards(proyectos) {
     if (!traducciones['es']) traducciones['es'] = {};
     if (!traducciones['en']) traducciones['en'] = {};
 
-    // Registrar traducciones dinámicas (sin nombre)
+    // Registrar traducciones dinámicas
     traducciones['es'][`${id}.descripcion`] = proyecto.Descripcion || 'No disponible';
     traducciones['es'][`${id}.caracteristicas`] = proyecto.Caracteristicas || 'No disponible';
     traducciones['es'][`${id}.amenidades`] = proyecto.Amenidades || 'No disponible';
@@ -67,10 +67,15 @@ function renderProjectCards(proyectos) {
     traducciones['en'][`${id}.caracteristicas`] = proyecto.Caracteristicas_Ingles || 'Not available';
     traducciones['en'][`${id}.amenidades`] = proyecto.Amenidades_Ingles || 'Not available';
 
-    // Crear la card con clases dinámicas y data-i18n
+    // Crear la card con ribbon en la esquina superior derecha
     const card = document.createElement('div');
     card.className = `project-card ${id}`;
     card.innerHTML = `
+      ${proyecto.Etiqueta ? `
+        <div class="developer-ribbon">
+          <span class="ribbon-text">${proyecto.Etiqueta}</span>
+        </div>
+      ` : ''}
       <div class="project-logo">
         <img src="7_Proyectos/${proyecto.Logo}" alt="${proyecto.Nombre} Logo" />
       </div>
@@ -83,6 +88,8 @@ function renderProjectCards(proyectos) {
     container.appendChild(card);
   });
 }
+
+
 
 // --------------------------------------------------------------- Click en cards
 function setupCardClick(proyectos) {
